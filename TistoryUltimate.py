@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#by Watson from BomiBar(http://tieba.baidu.com/f?kw=尹普美)
+#by tsopapa from BomiBar(http://tieba.baidu.com/f?kw=尹普美)
 
 import urllib2  
 import urllib  
@@ -91,7 +91,7 @@ for line in last_collect:
 						lines = ff.readlines()
 						for line in lines:
 							#find event name
-							pattern3= re.compile("title\" content=\"(.*)\" >")
+							pattern3= re.compile("og:title\" content=\"(.*)\" >")
 							m3=re.search(pattern3,line)
 							if m3:
 								title=m3.group(1)
@@ -126,11 +126,12 @@ else:
 	last = raw_input('所有收的图都是最新的，那些站子里面没有任何一家更新了。'.decode('utf-8').encode('gbk'))	
 
 
-
+last = raw_input('开始下载？'.decode('utf-8').encode('gbk'))
 	
 os.remove('temp')	
 tbudd=open('ToBupdated_CN.txt','r')
-os.makedirs(jintianriqi) 
+if not os.path.exists(jintianriqi): 
+	os.makedirs(jintianriqi) 
 os.chdir(jintianriqi)
 #step2: save all the new posts from all the websites
 for line in tbudd:
@@ -197,6 +198,6 @@ last_collect=open("last_collect.txt","w")
 for theurl in recentestPosts:
 	print >> last_collect, theurl
 last_collect.close()
-last = raw_input('按回车键关闭程序并打开本次收图日志'.decode('utf-8').encode('gbk'))	
+last = raw_input('按回车键关闭程序'.decode('utf-8').encode('gbk'))	
 		
 		
