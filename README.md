@@ -14,8 +14,8 @@ airport. After that, they will upload the photos they took of
 that idol to their own blog website. And obviously, many of them 
 choose to locate the blog on tistory.com.
 
-The job of this code is:
+Featuring:
 
-1. Collect the original size photo from all recorded blogs.
-2. Provide most common translations from Korean to Chinese.
-3. Update each day.
+1. Collect the original-size photos from all recorded blogs.
+2. Provide most common translations from Korean to Chinese, letting users to choose.
+3. Record each update. breakpoint resume.
