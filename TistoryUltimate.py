@@ -51,18 +51,21 @@ for line in last_collect:
 			f=open('temp','rb')
 			lines = f.readlines()
 			
-			done=0
+			recentPost_int=0
 			for line in lines:
-				if done==0:
-					pattern1= re.compile("<a href=\"/(\d+)\"")
-					m1=re.search(pattern1,line)
-					if m1:
-						
-						recentPost=m1.group(1)
-						recentPost_int=int(recentPost)
+				pattern1= re.compile("<a href=\"/(\d+)\"")
+				m1=re.search(pattern1,line)
+				if m1:
+					recentPost=m1.group(1)
+					temppppp=int(recentPost)
+					if temppppp>recentPost_int:
+						recentPost_int=temppppp
+						recentPost=str(recentPost_int)
 						myUrl='http://'+m0.group(1)+'.tistory.com/'+recentPost
-						recentestPosts.append(myUrl)
-						done=1
+			# print 'cun'
+			# print myUrl
+			recentestPosts.append(myUrl)
+					
 						
 			f.close()
 			#print lastpage_int
@@ -112,8 +115,9 @@ for line in last_collect:
 				os.remove('temptt')			# 
 		except:	
 			print u"这个站子貌似关了!"   #出现异常的处理方法
-					
-last_collect.close()						
+			recentestPosts.append(myUrl)
+			
+last_collect.close()
 ToBupdated.close()	
 os.system('python KR2CN.py')
 if(anyUpdate==1):
@@ -146,7 +150,7 @@ for line in tbudd:
 			url=myUrl,
 			# data = postdata,  
 			headers = headers  
-		) 
+		)
 
 		result = urllib2.urlopen(req)  
 
